@@ -1,7 +1,12 @@
 #author: Billy Fallon
-#version: 1.0
+#version: 1.1
+#date last updated: 11/26/17
 
 import random
+import csv
+
+
+filename = 'yankees_2016.csv'
 
 #2016 NYY batting data (baseball-reference.com)
 num_plate_appearances = 6059
@@ -229,7 +234,47 @@ def inning(num_innings):
     return total_runs
 
 
-print (inning(500))
+#analyzes the success of a sacrifice bunt in terms of its effects on expected runs
+def sacrifice_bunt_simulation (num_innings, initial_outs):
+    count = 0
+    total_runs = 0
+
+    #finding average for one runner on first
+    while count < num_innings:
+        state = [1, initial_outs, 0] #runner on first with amount of outs set equal to initial_outs parameter
+
+        while state[1] < 3:
+            state = simulate_at_bat(state)
+        
+        total_runs = total_runs + state[2]
+        count = count + 1
+    
+    print("Initial Outs: ")
+    print(initial_outs)
+
+    print("\nExpected runs per inning with a batter on first:")
+    print(total_runs/float(num_innings))
+
+    count = 0
+    total_runs = 0
+
+    #finding average after the runner on first advanced to second after a sacrifice bunt
+    while count < num_innings:
+        state = [2, initial_outs + 1, 0] #runner on second with amount of outs set equal to initial_outs parameter + 1
+
+        while state[1] < 3:
+            state = simulate_at_bat(state)
+        
+        total_runs = total_runs + state[2]
+        count = count + 1
+
+    print("\nExpected runs per inning after the runner on first advanced to second after a sacrifice bunt:")
+    print(total_runs/float(num_innings))
 
 
+    
+
+
+
+sacrifice_bunt_simulation(10000, 0)
 
