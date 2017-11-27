@@ -101,90 +101,90 @@ def simulate_at_bat(state):
             state[0] = 6
             state[2] = state[2] + 2
 
-#a triple is hit
-elif num_singles + num_doubles < rand < num_singles + num_doubles + num_triples:
-    if state[0] == 0:
-        state[0] = 3
+    #a triple is hit
+    elif num_singles + num_doubles < rand < num_singles + num_doubles + num_triples:
+        if state[0] == 0:
+            state[0] = 3
         
         elif state[0] == 1:
             state[0] = 3
             state[2] = state[2] + 1
 
-    elif state[0] == 2:
-        state[0] = 3
+        elif state[0] == 2:
+            state[0] = 3
             state[2] = state[2] + 1
         
         elif state[0] == 3:
             state[0] = 3
             state[2] = state[2] + 1
 
-elif state[0] == 4:
-    state[0] = 3
-        state[2] = state[2] + 2
+        elif state[0] == 4:
+            state[0] = 3
+            state[2] = state[2] + 2
         
         elif state[0] == 5:
             state[0] = 3
             state[2] = state[2] + 2
 
-    elif state[0] == 6:
-        state[0] = 3
+        elif state[0] == 6:
+            state[0] = 3
             state[2] = state[2] + 2
         
         elif state[0] == 7:
             state[0] = 3
             state[2] = state[2] + 3
 
-#a homerun is hit
-elif num_singles + num_doubles + num_triples < rand < num_singles + num_doubles + num_triples + num_homeruns:
-    if state[0] == 0:
-        state[0] = 0
+    #a homerun is hit
+    elif num_singles + num_doubles + num_triples < rand < num_singles + num_doubles + num_triples + num_homeruns:
+        if state[0] == 0:
+            state[0] = 0
             state[2] = state[2] + 1
         
         elif state[0] == 1:
             state[0] = 0
             state[2] = state[2] + 2
 
-    elif state[0] == 2:
-        state[0] = 0
+        elif state[0] == 2:
+            state[0] = 0
             state[2] = state[2] + 2
         
         elif state[0] == 3:
             state[0] = 0
             state[2] = state[2] + 2
 
-elif state[0] == 4:
-    state[0] = 0
-        state[2] = state[2] + 3
+        elif state[0] == 4:
+            state[0] = 0
+            state[2] = state[2] + 3
         
         elif state[0] == 5:
             state[0] = 0
             state[2] = state[2] + 3
 
-    elif state[0] == 6:
-        state[0] = 0
+        elif state[0] == 6:
+            state[0] = 0
             state[2] = state[2] + 3
         
         elif state[0] == 7:
             state[0] = 0
             state[2] = state[2] + 4
-#grandslam!
+            #grandslam!
 
-#batter is walked
-elif num_singles + num_doubles + num_triples + num_homeruns < rand < num_singles + num_doubles + num_triples + num_homeruns + num_bb:
-    if state[0] == 0:
-        state[0] = 1
+    #batter is walked
+    elif num_singles + num_doubles + num_triples + num_homeruns < rand < num_singles + num_doubles + num_triples + num_homeruns + num_bb:
+        if state[0] == 0:
+            state[0] = 1
         
         elif state[0] == 1:
             state[0] = 4
 
-    elif state[0] == 2:
-        state[0] = 4
+        elif state[0] == 2:
+            state[0] = 4
         
         elif state[0] == 3:
             state[0] = 5
 
-elif state[0] == 4:
-    state[0] = 7
+        elif state[0] == 4:
+            state[0] = 7
         
         elif state[0] == 5:
             state[0] = 7
@@ -192,13 +192,13 @@ elif state[0] == 4:
         elif state[0] == 6:
             state[0] = 7
 
-    elif state[0] == 7:
-        state[0] = 7
+        elif state[0] == 7:
+            state[0] = 7
             state[2] = state[2] + 1
 
-#batter is out (need to add double play funcitonality)
-else:
-    state[1] = state[1] + 1
+    #batter is out (need to add double play funcitonality)
+    else:
+        state[1] = state[1] + 1
     
     return state
 
@@ -252,7 +252,7 @@ def sacrifice_bunt_simulation (num_innings, initial_outs):
     print("Initial Outs: ")
     print(initial_outs)
 
-print("\nExpected runs per inning with a batter on first:")
+    print("\nExpected runs per inning with a batter on first:")
     print(total_runs/float(num_innings))
     
     count = 0
@@ -273,7 +273,4 @@ print("\nExpected runs per inning with a batter on first:")
 
 
 
-
-
-
-sacrifice_bunt_simulation(10000, 0)
+sacrifice_bunt_simulation(100000, 1)
